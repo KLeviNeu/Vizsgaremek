@@ -4,6 +4,7 @@ Cégem az ITWorks informatikai szolgáltatásokat nyújt széles körben, főleg
 A Cacti.hu egy növények értékesítésével foglalkozó kisvállalkozás, és arra kért fel bennünket, építsünk ki nekik egy biztonságos, és hatékony hálózatot új irodájukba.
 # A helyszín
 Az épületben található egy váró és lobby is, valamint 3 külön iroda és 1 szerverszoba is.
+![Az iroda alaprajza](KomarL_Iroda.PNG)
 # Igényfelmérés
 A cég kért egy tárterületet, ahova alkalmazottai menthetik fájljaikat, levelező- és web szolgáltatásokat.
 # Részlegek és területeik kezelése
@@ -306,7 +307,16 @@ R1(config)#interface GigabitEthernet 0/1
 R1(config-if)#standby version 2
 R1(config-if)#standby ip 192.168.11.9
 ```
+Mivel R1-et szeretnénk aktív routernek hozzá kell adni 2 ezt a plusz sort
+```
+R1(config-if)#standby preempt
+R1(config-if)#standby priority 255
+```
 Ugyanezt megismételjük R2-n is.
+Le is ellenőrizhetjük a következő módon:
+```
+R1#show standby brief
+```
 # Biztonság
 ## Portok biztosítása
 A DTP letiltása, valamint a nem használt portoknak a letiltása és egy nem használt VLAN-ba való helyezése segít lecsökkenteni a váratlan támadások esélyét
@@ -334,6 +344,12 @@ SW1(config-if-range)#switchport port-security violation restrict
 SW1(config)#enable secret cacti
 SW1(config)#service password-encryption
 ```
+és már nem lehet kiolvasni a konfigurációból a jelszavakat
+```
+R1#show running-config | section password
+service password-encryption
+username user1 password 7 08314D5D1A48
+```
 ## DHCP biztonsága
 A portbiztonság hasznos, de az sem véd mindentől, így a DHCP hamisítás ellen külön védelmet kell alkalmazni.
 Állítsunk be minden VLAN-ra dhcp snoopingot, hogy csak a megbízható eszközök felől érkezhessen DHCP
@@ -343,11 +359,34 @@ SW1(config)#ip dhcp snooping vlan 1,10,20,30,40,99,100
 SW1(config)#interface GigabitEthernet 0/1
 SW1(config-if)#ip dhcp snooping trust
 ```
+Tesztelhető a következő paranccsal:
+```
+SW4#show ip dhcp snooping 
+Switch DHCP snooping is enabled
+DHCP snooping is configured on following VLANs:
+1,10,20,30,40,99,100
+Insertion of option 82 is disabled
+Option 82 on untrusted port is not allowed
+Verification of hwaddr field is enabled
+Interface                  Trusted    Rate limit (pps)
+-----------------------    -------    ----------------
+FastEthernet0/1            no         unlimited       
+GigabitEthernet0/1         yes        unlimited 
+```
 ## ARP tábla biztonsága
 De mivel a hackerek is egyre ügyesebbek, és semmi sem véd mindent egyszerre, külön DAI-t is kell alkalmaznunk.
 ```
 SW1(config-if)#ip arp inspection vlan 1,10,20,30,40,99,100
 SW1(config)#ip arp inspection validate dst-mac ip src-mac
+```
+Ez is ellenőrizhető:
+```
+SW4#show ip arp inspection
+
+Source Mac Validation      : Enabled
+Destination Mac Validation : Enabled
+IP Address Validation      : Enabled
+...
 ```
 ## STP biztonsága
 Hogy megakadájozzuk, hogy ellenőrizetlen kapcsolókat csatoljanak a rendszerre, BpduGuardot alkamaztunk
@@ -371,20 +410,22 @@ R0(config-if)#ip ospf message-digest-key 1 md5 cacti
 # Internetelérés
 
 ```
-R0(config)#interface range GigabitEthernet 0/0-2
-R0(config-if-range)#ip nat inside
-R0(config-if-range)#interface Serial 0/0/0
-R0(config-if)#ip nat inside
-R0(config-if)#interface Serial 0/0/1
-R0(config-if)#ip nat outside
-R0(config-if)#ip access-list standard NAT_ACL
-R0(config-std-nacl)#permit any
-R0(config-std-nacl)#ip nat pool NAT_PL 10.0.0.10 10.0.0.14 netmask 255.255.255.248
-R0(config)#ip nat inside source list NAT_ACL pool NAT_PL overload
-R0(config)#ip nat inside source static tcp 192.168.11.11 80 10.0.0.10 80
-R0(config)#ip nat inside source static tcp 192.168.11.11 443 10.0.0.10 443
-R0(config)#ip nat inside source static tcp 192.168.11.11 53 10.0.0.10 53
-R0(config)#ip nat inside source static udp 192.168.11.11 53 10.0.0.10 53
+R1(config)#interface range GigabitEthernet 0/0-2
+R1(config-if-range)#ip nat inside
+R1(config-if-range)#interface Serial 0/0/0
+R1(config-if)#ip nat inside
+R1(config-if)#interface Serial 0/0/1
+R1(config-if)#ip nat outside
+R1(config-if)#ip access-list standard NAT_ACL
+R1(config-std-nacl)#permit any
+R1(config-std-nacl)#ip nat pool NAT_PL 10.0.0.10 10.0.0.14 netmask 255.255.255.248
+R1(config)#ip nat inside source list NAT_ACL pool NAT_PL overload
+R1(config)#ip nat inside source static tcp 192.168.11.11 80 10.0.0.10 80
+R1(config)#ip nat inside source static tcp 192.168.11.11 443 10.0.0.10 443
+R1(config)#ip nat inside source static tcp 192.168.11.11 53 10.0.0.10 53
+R1(config)#ip nat inside source static udp 192.168.11.11 53 10.0.0.10 53
+R1(config)#ip nat inside source static udp 192.168.11.11 69 10.0.0.10 69
+
 ```
 # WiFi
 A vezeték nélküli eszközök megkapják az összes szükséges információt a hálózat eléréséhez
