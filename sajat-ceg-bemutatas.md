@@ -23,3 +23,9 @@ Cisco, MikroTik,
 
 
 ## Vezetőség
+- Komár Levente: <br>
+A vállalkozás vezetője, ő kezel mindent
+- Galambos Tamás: <br>
+Hálózati szakértő vezető
+- Szabó Bence: <br>
+Hálózatfejlesztés vezetője
