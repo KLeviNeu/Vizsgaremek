@@ -1,4 +1,4 @@
-# Cégbemutató: <cégnév>
+# Cégbemutató: ITworks
 ## Általános Információk
  - **Cégnév**: <cégnév>
  - **Alapítás éve**: 2023
