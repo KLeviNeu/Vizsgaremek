@@ -4,7 +4,7 @@
  - **Alapítás éve**: 2024
  - **Székhely**: Budapest, **************
  - **Tevékenységi terület**: Hálózatépítés, tervezés, karbantartás, IT infrastruktúra megoldások
- - **Partnerek**: Microsoft, Dell, HP, Cisco, stb.
+ - **Partnerek**: Microsoft, Dell, HP, Cisco
 
 
 ## Szolgáltatások
