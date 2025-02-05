@@ -8,7 +8,7 @@ Egy játéktervező cégről van szó, amely elsősorban stratégiai játékok f
 - **Név**: Stratagem Studios <br>
 - **Alapítás**: Jelenleg épül <br>
 - **Székhely**: Budapest, Magyarország <br>
-- **Fő fókusz**: Stratégiai játékok fejlesztése PC-re és telefonra. <br>
+- **Fő fókusz**: Stratégiai játékok fejlesztése PC-re. <br>
 <br>
 
 **Játékstílus és filozófia**: <br>
