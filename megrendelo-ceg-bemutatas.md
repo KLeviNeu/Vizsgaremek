@@ -9,6 +9,28 @@ Egy játéktervező cégről van szó, amely elsősorban stratégiai játékok f
 - **Alapítás**: Jelenleg épül <br>
 - **Székhely**: Budapest, Magyarország <br>
 - **Fő fókusz**: Stratégiai játékok fejlesztése PC-re. <br>
+
+<br>
+
+## Igényfelmérések
+
+<br>
+
+| **Vlan** | **Beosztás** | **Létszám** |
+|:--- | :---: | ---: |
+|10|Programozók|15|
+|20|Designer|10|
+|30|Hangtechnika|4|
+|40|Rendszergazda|3|
+|50|Szerver & felhőszolgáltatás|8|
+|60|Adatbáziskezelő|5|
+|70|Tesztelés|5|
+
+## Egyéb kérések
+- Community management és Marketing egy közös eszközön
+- A két fő hálózaton "Management" Vlan kialakítás
+
+<br>
 <br>
 
 **Játékstílus és filozófia**: <br>
