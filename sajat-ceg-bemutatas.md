@@ -18,8 +18,6 @@ Tűzfalak, VPN-ek és egyéb biztonsági megoldások integrálása.
 Hálózati eszközök rendszeres ellenőrzése és karbantartása.
 5. **IT infrastruktúra tanácsadás**: <br>
 Tanácsadás a legmodernebb technológiák bevezetésében.
-6. **Technológiák**: <br>
-Cisco, MikroTik, 
 
 
 ## Vezetőség
