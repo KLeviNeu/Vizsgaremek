@@ -26,6 +26,13 @@ Egy játéktervező cégről van szó, amely elsősorban stratégiai játékok f
 |60|Adatbáziskezelő|5|
 |70|Tesztelés|5|
 
+<br>
+- Legyen biztoságos és hibatürő a hálózat
+- Lehessen otthonról is dolgozni
+- 0-24 szerver elérhetőség
+- Weboldal és webshop
+
+
 ## Egyéb kérések
 - Community management és Marketing egy közös eszközön
 - A két fő hálózaton "Management" Vlan kialakítás
