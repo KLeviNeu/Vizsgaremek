@@ -27,10 +27,10 @@ Egy játéktervező cégről van szó, amely elsősorban stratégiai játékok f
 |70|Tesztelés|5|
 
 <br>
-- Legyen biztoságos és hibatürő a hálózat
-- Lehessen otthonról is dolgozni
-- 0-24 szerver elérhetőség
-- Weboldal és webshop
+- Legyen biztoságos és hibatürő a hálózat <br>
+- Lehessen otthonról is dolgozni <br>
+- 0-24 szerver elérhetőség <br>
+- Weboldal és webshop <br>
 
 
 ## Egyéb kérések
