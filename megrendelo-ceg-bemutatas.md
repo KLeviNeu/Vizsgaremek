@@ -16,21 +16,24 @@ Egy játéktervező cégről van szó, amely elsősorban stratégiai játékok f
 
 <br>
 
-| **Vlan** | **Beosztás** | **Létszám** |
-|:--- | :---: | ---: |
-|10|Programozók|15|
-|20|Designer|10|
-|30|Hangtechnika|4|
-|40|Rendszergazda|3|
-|50|Szerver & felhőszolgáltatás|8|
-|60|Adatbáziskezelő|5|
-|70|Tesztelés|5|
+| **Beosztás** | **Létszám** |
+| :--- | ---: |
+|Programozók|25|
+|Designer|14|
+|Hangtechnika|6|
+|Rendszergazda|10|
+|Szerver & felhőszolgáltatás|14|
+|Adatbáziskezelő|3|
+|Tesztelés|6|
+|Community-Marketing|15|
 
 <br>
 - Legyen biztoságos és hibatürő a hálózat <br>
 - Lehessen otthonról is dolgozni <br>
 - 0-24 szerver elérhetőség <br>
-- Weboldal és webshop <br>
+- Weboldal <br>
+- Távoli elérhetőség a szervereknek/egyéb eszközöknek <br>
+
 
 
 ## Egyéb kérések
