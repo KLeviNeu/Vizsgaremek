@@ -1,0 +1,21 @@
+New-Item -Path "C:\Backup" -ItemType Directory
+
+New-SmbShare -Name "Mentes" -Path "C:\Backup" -FullAccess "DOMAIN\Administrator"
+
+
+wbadmin start backup -backupTarget:\\192.168.1.75\mentes -include:C: -allCritical -quiet
+
+
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+
+Test-Path \\192.168.1.75\mentes
+
+
+wbadmin enable backup -addTarget:\\S2\mentes -schedule:00:00 -include:C: -allCritical -quiet
+VAGY
+wbadmin enable backup -addTarget:\\192.168.1.75\mentes -schedule:00:00 -include:C: -allCritical -quiet
+
+
+wbadmin get versions -backupTarget:\\192.168.1.75\mentes
+
+
